@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="defaultTemplate" template="/WEB-INF/views/layouts/default.jsp">
+		<put-attribute name="title" value="Dojo Examples"/>
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="left-nav" value="/WEB-INF/views/left-nav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+
+	<definition name="home" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+
+	<!-- Commenting out this definition will cause the view resolver to fall through
+	directly to the JSP instead of this tiles definition. -->
+
+	<definition name="ajax" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/ajax.jsp" />
+	</definition>
+
+	<definition name="query" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+
+</tiles-definitions>

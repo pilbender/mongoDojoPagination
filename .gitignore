@@ -1,0 +1,11 @@
+# Build files
+/target
+
+# Intellij files
+/.idea
+mongoDojoPagination.iml
+
+# Eclipse files
+/.classpath
+/.project
+/.settings

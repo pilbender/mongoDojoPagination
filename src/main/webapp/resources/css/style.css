@@ -1,0 +1,70 @@
+.header-text {
+	text-align: center;
+	color: black;
+	font-size: large;
+}
+
+.header {
+}
+
+.footer {
+	padding: 10px;
+}
+
+.wrapper {
+	max-width: 1280px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.main-content-wrapper {
+	float: left;
+	width: 80%;
+}
+
+.main-content {
+	padding: 10px;
+}
+
+.left-nav-wrapper {
+	float: left;
+	width: 20%;
+}
+.left-nav {
+	padding: 10px;
+	border: 1px solid black;
+}
+
+/* Gray out links we want to skip in a one hour presentation */
+.left-nav .skip-me {
+	background-color: lightgray;
+}
+
+.clear {
+	clear: both;
+}
+
+/* Rotate Pane */
+.rotator {
+	background-color:#fff;
+	border:solid 1px #e5e5e5;
+	width:400px;
+	height:180px;
+	overflow:hidden;
+}
+.pane {
+	background-color:#fff;
+	width:400px;
+	height:180px;
+	overflow:hidden;
+	padding: 10px;
+}
+.pane0 {
+	background-color:#fff79e;
+}
+.pane1 {
+	background-color:#ffd4a0;
+}
+.pane2 {
+	background-color:#ffa0a0;
+}
