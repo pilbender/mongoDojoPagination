@@ -3,7 +3,7 @@
 <tiles-definitions>
 
 	<definition name="defaultTemplate" template="/WEB-INF/views/layouts/default.jsp">
-		<put-attribute name="title" value="Dojo Examples"/>
+		<put-attribute name="title" value="Mongo Dojo Pagination"/>
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 		<put-attribute name="left-nav" value="/WEB-INF/views/left-nav.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
