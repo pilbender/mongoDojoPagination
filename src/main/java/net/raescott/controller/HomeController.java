@@ -1,4 +1,4 @@
-package net.raescott.dojo;
+package net.raescott.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
