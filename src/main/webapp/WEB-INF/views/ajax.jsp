@@ -40,4 +40,36 @@
                         resultDiv.innerHTML = error;
                     });
         });
+
+        require(["dojo/store/JsonRest"], function(JsonRest){
+            var store = new JsonRest({
+                target: "/some/resource"
+            });
+
+            // Get an object by identity
+            store.get(id).then(function(item){
+                // item will be the DB item
+            });
+
+            // Query for objects with options
+            store.query("foo=bar", {
+                start: 10,
+                count: 10,
+                sort: [
+                    { attribute: "baz", descending: true }
+                ]
+            }).then(function(results){
+                // results should contain up to 10 items, sorted by "baz" in descending fashion
+            });
+
+            // Store an object identified by identity
+            store.put({
+                foo: "bar"
+            }, {
+                id: 3
+            });
+
+            // Remove an object by ID
+            store.remove(3);
+        });
     </script>
