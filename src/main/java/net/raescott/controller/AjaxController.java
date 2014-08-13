@@ -1,9 +1,11 @@
 package net.raescott.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.collections.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,4 +36,13 @@ public class AjaxController {
 		return response;
 	}
 
+    @RequestMapping(value = "example-paging", method = RequestMethod.GET)
+    public @ResponseBody List<Part> examplePaging() {
+        List<Part> partList = new LinkedList<Part>();
+        Iterable<Part> partIterable = partMongoRepositoryGenerated.findAll();
+        for (Part part : partIterable) {
+            partList.add(part);
+        }
+        return partList;
+    }
 }
