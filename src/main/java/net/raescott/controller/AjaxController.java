@@ -1,20 +1,29 @@
-package net.raescott.dojo;
+package net.raescott.controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.raescott.dto.Part;
+import net.raescott.repository.mongo.PartMongoRepositoryGenerated;
+
 @Controller
 @RequestMapping("ajax")
 public class AjaxController {
+    @Autowired PartMongoRepositoryGenerated partMongoRepositoryGenerated;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("message", "Page content");
+        Part part = partMongoRepositoryGenerated.findByPartNumber("10000");
+        model.addAttribute("mongo", part);
 		return "ajax";
 	}
 

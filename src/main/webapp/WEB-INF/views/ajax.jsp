@@ -1,4 +1,10 @@
     <p>
+        Dynamic content: ${message}
+    </p>
+    <p>
+        <b>Mongo content:</b> partNumber: ${mongo.partNumber} ${mongo.partName}
+    </p>
+    <p>
         AJAX Message
         <div id="ajaxGet">loading...</div>
     </p>
