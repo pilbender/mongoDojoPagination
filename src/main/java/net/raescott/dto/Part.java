@@ -13,7 +13,10 @@ public class Part implements Dto, Pageable {
     private String partName;
 
     private int pageSize;
-
+    private int pageNumber;
+    private int offset;
+    private String sort;
+    private Part part;
 
     public String getPartNumber() {
         return partNumber;
@@ -33,22 +36,27 @@ public class Part implements Dto, Pageable {
 
     @Override
     public int getPageNumber() {
-        return 0;
+        if (getPageSize() > 0) {
+            return offset / pageSize;
+        } else {
+            return 0;
+        }
     }
 
     @Override
     public int getPageSize() {
-        return 0;
+        return pageSize;
     }
 
     @Override
     public int getOffset() {
-        return 0;
+        return offset;
     }
 
     @Override
     public Sort getSort() {
-        return null;
+        Sort.Order order = new Sort.Order("asc".equalsIgnoreCase(sort) ? Sort.Direction.ASC : Sort.Direction.DESC, "partName");
+        return new Sort(order);
     }
 
     @Override
