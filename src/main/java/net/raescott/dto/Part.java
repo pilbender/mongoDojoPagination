@@ -63,9 +63,13 @@ public class Part implements Dto, Pageable {
 
     @Override
     public Sort getSort() {
-        Sort.Order order = new Sort.Order("asc".equalsIgnoreCase(sort) ? Sort.Direction.ASC : Sort.Direction.DESC, "partName");
+        Sort.Order order = new Sort.Order("desc".equalsIgnoreCase(sort) ? Sort.Direction.DESC : Sort.Direction.ASC, "partNumber");
         return new Sort(order);
     }
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
 
     @Override
     public Pageable next() {
