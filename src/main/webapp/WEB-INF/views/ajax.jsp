@@ -103,18 +103,20 @@
             // Remove an object by ID
             /*store.remove(3);*/
 
+            var page = 0;
+            var pageSize = 1;
             var previous = dom.byId("previous");
             var next = dom.byId("next");
-            getParts(0, 1);
+            getParts(page, pageSize);
 
             // Previous
             on (previous, "click", function(event) {
-
+              getParts(--page, pageSize);
             });
 
             // Next
             on (next, "click", function(event) {
-
+              getParts(++page, pageSize);
             });
         });
     </script>
