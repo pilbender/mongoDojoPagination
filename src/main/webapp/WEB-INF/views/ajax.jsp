@@ -105,7 +105,7 @@
 
             var previous = dom.byId("previous");
             var next = dom.byId("next");
-            getParts(0, 1);
+            getParts(0, 1); // By default we are returning item one with a page size of one, or one item returned.
 
             // Previous
             on (previous, "click", function(event) {
