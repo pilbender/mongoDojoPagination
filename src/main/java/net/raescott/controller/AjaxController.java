@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.raescott.dto.Part;
@@ -37,7 +38,7 @@ public class AjaxController {
 	}
 
     @RequestMapping(value = "example-paging", method = RequestMethod.GET)
-    public @ResponseBody List<Part> examplePaging() {
+    public @ResponseBody List<Part> examplePaging(@RequestParam(required = false) String attribute) {
         List<Part> partList = new LinkedList<Part>();
         Iterable<Part> partIterable = partMongoRepositoryGenerated.findAll();
         for (Part part : partIterable) {
