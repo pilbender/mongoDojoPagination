@@ -51,7 +51,7 @@ public class AjaxController {
 		    if( range != null){
 					range = range.substring("items=".length());
 					int from = Integer.valueOf(range.substring(0, range.indexOf('-')));
-					int to = Integer.valueOf(range.substring(0, range.indexOf('-') + 1 ));
+					int to = Integer.valueOf(range.substring(range.indexOf('-') + 1 ));
 
 					partPageable.setPageSize(to - from + 1);
 					partPageable.setOffset(from);
