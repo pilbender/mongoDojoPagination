@@ -48,10 +48,18 @@ public class Part implements Dto, Pageable {
         return pageSize;
     }
 
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
     @Override
     public int getOffset() {
         return offset;
     }
+
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 
     @Override
     public Sort getSort() {

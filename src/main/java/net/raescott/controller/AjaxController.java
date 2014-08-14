@@ -47,10 +47,10 @@ public class AjaxController {
 			, @RequestParam(required = false) String attribute) {
         List<Part> partList = new LinkedList<Part>();
 
-        Iterable<Part> partIterable = partMongoRepositoryGenerated.findAll();
-        for (Part part : partIterable) {
-            partList.add(part);
-        }
+		Part partPageable = new Part();
+		partPageable.setPageSize(1);
+		partPageable.setOffset(0);
+        partList = partMongoRepositoryGenerated.findAll(partPageable).getContent();
         return partList;
     }
 }
