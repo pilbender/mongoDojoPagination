@@ -43,33 +43,37 @@
 
         require(["dojo/store/JsonRest"], function(JsonRest){
             var store = new JsonRest({
-                target: "/some/resource"
+                target: "/mongoDojoPagination/ajax/example-paging?",
+                idProperty: "partNumber"
             });
 
+            // Not used right now.
             // Get an object by identity
-            store.get(id).then(function(item){
+            /*store.get(id).then(function(item){
                 // item will be the DB item
-            });
+            });*/
 
             // Query for objects with options
-            store.query("foo=bar", {
-                start: 10,
-                count: 10,
+            store.query("attribute=partNumber", {
+                start: 0,
+                count: 1,
                 sort: [
-                    { attribute: "baz", descending: true }
+                    { attribute: "partNumber", descending: true }
                 ]
             }).then(function(results){
                 // results should contain up to 10 items, sorted by "baz" in descending fashion
             });
 
+            // Not used right now.
             // Store an object identified by identity
-            store.put({
+            /*store.put({
                 foo: "bar"
             }, {
                 id: 3
-            });
+            });*/
 
+            // Not used right now.
             // Remove an object by ID
-            store.remove(3);
+            /*store.remove(3);*/
         });
     </script>
