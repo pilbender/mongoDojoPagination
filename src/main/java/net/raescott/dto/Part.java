@@ -16,7 +16,6 @@ public class Part implements Dto, Pageable {
     private int pageNumber;
     private int offset;
     private String sort;
-    private Part part;
 
     public Part(){
       pageSize = 10; // TODO Default to default maximum 
