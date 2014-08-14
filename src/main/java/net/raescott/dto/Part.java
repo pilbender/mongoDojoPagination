@@ -18,6 +18,10 @@ public class Part implements Dto, Pageable {
     private String sort;
     private Part part;
 
+    public Part(){
+      pageSize = 10; // TODO Default to default maximum 
+    }
+
     public String getPartNumber() {
         return partNumber;
     }
