@@ -1,9 +1,18 @@
     <p>
         Dynamic content: ${message}
     </p>
+    <hr />
     <p>
         <b>Mongo content:</b> partNumber: ${mongo.partNumber} ${mongo.partName}
     </p>
+    <hr />
+    <p>
+        <div id="pageable" ></div>
+    </p>
+    <p>
+        <button id="previous">Previous</button><button id="next">Next</button>
+    </p>
+    <hr />
     <p>
         AJAX Message
         <div id="ajaxGet">loading...</div>
@@ -41,7 +50,12 @@
                     });
         });
 
-        require(["dojo/store/JsonRest"], function(JsonRest){
+        require(["dojo/store/JsonRest",
+            "dojo/dom",
+            "dojo/mouse",
+            "dojo/on",
+            "dojo/domReady!"],
+                function(JsonRest, dom, mouse, on) {
             var store = new JsonRest({
                 target: "/mongoDojoPagination/ajax/example-paging?",
                 idProperty: "partNumber"
@@ -54,15 +68,24 @@
             });*/
 
             // Query for objects with options
-            store.query("attribute=partNumber", {
-                start: 0,
-                count: 1,
-                sort: [
-                    { attribute: "partNumber", descending: true }
-                ]
-            }).then(function(results){
-                // results should contain up to 10 items, sorted by "baz" in descending fashion
-            });
+            var getParts = function (start, count) {
+
+                store.query("attribute=partNumber", {
+                    start: 0,
+                    count: 1,
+                    sort: [
+                        { attribute: "partNumber", descending: true }
+                    ]
+                }).then(function (results) {
+                    // results should contain up to 10 items, sorted by "baz" in descending fashion
+					var pageable = dom.byId("pageable");
+					pageable.innerHTML = "";
+                    for(i = 0; i < results.length; ++i) {
+						pageable.innerHTML += "<br />" + results[i].partNumber + " " + results[i].partName;
+					};
+
+                });
+            };
 
             // Not used right now.
             // Store an object identified by identity
@@ -75,5 +98,19 @@
             // Not used right now.
             // Remove an object by ID
             /*store.remove(3);*/
+
+            var previous = dom.byId("previous");
+            var next = dom.byId("next");
+            getParts(0, 1);
+
+            // Previous
+            on (previous, "click", function(event) {
+
+            });
+
+            // Next
+            on (next, "click", function(event) {
+
+            });
         });
     </script>
