@@ -72,7 +72,7 @@
 
                 store.query("attribute=partNumber", {
                     start: 0,
-                    count: 1,
+                    count: 99,
                     sort: [
                         { attribute: "partNumber", descending: true }
                     ]
