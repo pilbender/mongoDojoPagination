@@ -2,7 +2,7 @@
 
 <hr />
 <div class="footer">
-    by Scott Smith<br />
+    by Scott Smith and Kevin Brandon<br />
     Isos Technology
 </div>
 
