@@ -1,2 +1,3 @@
 { "_class" : "net.raescott.dto.Part", "partNumber" : "10000",   "partName" : "Tail Light" }
 { "_class" : "net.raescott.dto.Part", "partNumber" : "10001",   "partName" : "Head Light" }
+{ "_class" : "net.raescott.dto.Part", "partNumber" : "10002",   "partName" : "Side Light" }
