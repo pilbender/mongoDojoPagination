@@ -45,11 +45,16 @@ public class AjaxController {
     @RequestMapping(value = "example-paging", method = RequestMethod.GET)
     public @ResponseBody List<Part> examplePaging(@RequestHeader(required = false) String range
 			, @RequestParam(required = false) String attribute) {
+		String[] ranges = range.substring("items=".length()).split("-");
+		int from = Integer.valueOf(ranges[0]);
+		int to = Integer.valueOf(ranges[1]);
+
         List<Part> partList = new LinkedList<Part>();
 
 		Part partPageable = new Part();
-		partPageable.setPageSize(1);
-		partPageable.setOffset(0);
+		partPageable.setPageSize(to - from + 1);
+		partPageable.setOffset(from);
+		partPageable.setSort("asc");
         partList = partMongoRepositoryGenerated.findAll(partPageable).getContent();
         return partList;
     }

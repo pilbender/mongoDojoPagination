@@ -68,11 +68,15 @@
             });*/
 
             // Query for objects with options
+			/* Gets a set of parts which supports pagination.
+			 * start: is the zero based array index for the first part of that page
+			 * count: is the number items to display per page
+			 */
             var getParts = function (start, count) {
 
                 store.query("attribute=partNumber", {
-                    start: 0,
-                    count: 99,
+                    start: start,
+                    count: count,
                     sort: [
                         { attribute: "partNumber", descending: true }
                     ]
