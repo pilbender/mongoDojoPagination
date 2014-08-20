@@ -78,7 +78,7 @@
                     start: start,
                     count: count,
                     sort: [
-                        { attribute: "partNumber", descending: true }
+                        { attribute: "partNumber", descending: false } // The descending switch is not honored, I don't know why.
                     ]
                 }).then(function (results) {
                     // results should contain up to 10 items, sorted by "baz" in descending fashion
@@ -104,19 +104,19 @@
             /*store.remove(3);*/
 
             var page = 0;
-            var pageSize = 1;
+            var pageSize = 2;
             var previous = dom.byId("previous");
             var next = dom.byId("next");
             getParts(page, pageSize); // By default we are returning item one with a page size of one, or one item returned.
 
             // Previous
             on (previous, "click", function(event) {
-              getParts(--page, pageSize);
+              getParts(page-=pageSize, pageSize);
             });
 
             // Next
             on (next, "click", function(event) {
-              getParts(++page, pageSize);
+              getParts(page+=pageSize, pageSize);
             });
         });
     </script>
