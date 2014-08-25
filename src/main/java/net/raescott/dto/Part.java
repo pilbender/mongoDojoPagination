@@ -11,6 +11,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Part implements Dto, Pageable {
     private String partNumber;
     private String partName;
+    private String img;
+    private String line;
+    private String productNameInfo;
 
     private int pageSize;
     private int pageNumber;
@@ -35,6 +38,30 @@ public class Part implements Dto, Pageable {
 
     public void setPartName(String partName) {
         this.partName = partName;
+    }
+
+    public String getImg() {
+      return img;
+    }
+  
+    public void setImg(String img) {
+      this.img = img;
+    }
+
+    public String getLine(){
+      return line;
+    }
+
+    public void setLine(String line){
+      this.line = line;
+    }
+
+    public String getProductNameInfo(){
+      return productNameInfo;
+    }
+ 
+    public void setProductNameInfo(String productNameInfo){
+      this.productNameInfo = productNameInfo;
     }
 
     @Override

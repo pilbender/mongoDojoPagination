@@ -4,3 +4,6 @@
 <div class="header-text">
     <a href="${pageContext.servletContext.contextPath}" >Mongo with AJAX Dojo Pagination</a>
 </div>
+
+<script>dojoConfig = {parseOnLoad: true}</script>
+

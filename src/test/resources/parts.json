@@ -1,3 +1,4 @@
 { "_class" : "net.raescott.dto.Part", "partNumber" : "10000",   "partName" : "Tail Light" }
 { "_class" : "net.raescott.dto.Part", "partNumber" : "10001",   "partName" : "Head Light" }
 { "_class" : "net.raescott.dto.Part", "partNumber" : "10002",   "partName" : "Side Light" }
+{ "_class" : "net.raescott.dto.Part", "partNumber" : "51515", "img" : "resources/images/51515.jpg", "line" : "WIX", "productNameInfo" : "Dimensions: Panel; Height: 1.188 In.; Outside Length: 9.25 In.; Outside Width: 7.5 In.",  "partName" : "Filter" } 
