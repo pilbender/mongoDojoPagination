@@ -12,28 +12,36 @@ define([
     return declare("demo.Pageable", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
       templateString: template,
       widgetsInTemplate: true,
-      store: undefined,
-      type: undefined,
       pageSize: 10,
-      page: 0,
-      query: {
-             start: this.page * this.pageSize,
-             count: this.pageSize-1,
-             sort: this.sort
-           },
+      page: undefined,
       postCreate: function(){
         // Next
         on (this.nextNode, "click", dojo.hitch(this, function(event) {
-          this.page++;
-          this.onPageChange();
+          this.set("page", this.page + 1);
         }));
 
         // Previous
         on (this.prevNode, "click", dojo.hitch(this, function(event) {
-          this.page--;
+          this.set("page", this.page - 1);
         }));
+      
+        if(!this.page)
+          this.set("page", 0); 
       },
-      onPageChange: function(){
+      onChange: function(page){
+
+        if(page >= 0){
+          this.page = page;
+          this.query = {
+             start: this.page * this.pageSize,
+             count: this.pageSize,
+             sort: this.sort
+          };
+          this.update();
+        }
+      },
+      _setPageAttr: function (page){
+        this.onChange(page);
       }
     });
 });

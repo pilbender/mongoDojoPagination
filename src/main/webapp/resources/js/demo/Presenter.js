@@ -13,27 +13,27 @@ define([
       store: undefined,
       type: undefined,
       query: {},
-      sort: [
-        { descending: true }
-      ],
+      queryAttr: "year=2012",
+      sort: [{ attribute: "partNumber", descending: true }],
 
       create: function(){
          this.inherited(arguments);
       },
   
-      _update: function(){
-         domConstruct.empty(this.contentNode);
-         if(this.store){
-           var results = this.store.query(this.query);
-           results.forEach(dojo.hitch(this, function(result, i){
-             if(this.type){
-               require([this.type], dojo.hitch(this, function(type){
-                 var div = domConstruct.create("div", null, this.contentNode);
-                 new type({json:result}).placeAt(div);
-               }));
-             } 
-           }));
-         }
+      update: function(){
+        if(this.type){
+          require([this.type], dojo.hitch(this, function(type){
+          domConstruct.empty(this.contentNode);
+
+						if(this.store){
+							var results = this.store.query(this.queryAttr, this.query);
+							results.forEach(dojo.hitch(this, function(result, i){
+									 var div = domConstruct.create("div", null, this.contentNode);
+										new type({json:result}).placeAt(div);
+							}));
+						}
+					}));
+        } 
       }
     });
 });

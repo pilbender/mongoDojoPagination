@@ -6,16 +6,12 @@ define([
     "dojo/domReady!"],
     function(declare, presenter, pageable, _WidgetsInTemplateMixin) {
 
-    return declare("demo.PageablePresenter", [pageable, presenter, _WidgetsInTemplateMixin], {
+    return declare("demo.PageablePresenter", [presenter, pageable, _WidgetsInTemplateMixin], {
       templateString: '<div>' + presenter.prototype.templateString + pageable.prototype.templateString + '</div>',
       widgetsInTemplate: true,
-      pageSize: 1,
+      pageSize: 2,
       create: function(){
         this.inherited(arguments);
-        this._update();
-      },
-      onPageChange: function(){
-        this._update(); 
       }
     });
 });
