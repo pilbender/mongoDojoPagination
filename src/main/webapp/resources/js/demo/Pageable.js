@@ -40,15 +40,19 @@ define([
       
         if(!this.page)
           this.set("page", 0);
+        this.update();
       },
-      onChange: function(page){
-        if(page != this.page && page >= 0){
-          this._set("page", page);
+      update: function(){
           this.query = {
              start: this.page * this.pageSize,
              count: this.pageSize,
              sort: this.sort
           };
+          this.inherited(arguments);
+      },
+      onChange: function(page){
+        if(page != this.page && page >= 0){
+          this._set("page", page);
           this.update();
         }
       },
