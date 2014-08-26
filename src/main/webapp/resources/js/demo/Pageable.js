@@ -58,6 +58,10 @@ define([
       },
       _setPageAttr: function (page){
         this.onChange(page);
+      },
+      _setPageSizeAttr: function (pageSize){
+        this._set("pageSize", pageSize);
+        this.set("page",this.page);
       }
     });
 });
