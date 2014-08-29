@@ -9,60 +9,85 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 public class Part implements Dto, Pageable {
+    static final int MAX_SIZE = 100;
+    private String partNumberDisplay;
+    private String partNumberDescription;
+    private String suggestedOrderQty;
+    private String shortDescription;
+    private String brandCode;
     private String partNumber;
-    private String partName;
-    private String img;
-    private String line;
-    private String productNameInfo;
+    private String productFeatures;
+    private String imgOrientationId;
+    private String partNumberImage;
+    private String partNumberThumbnail;
+    private String primaryImage;
+    private String representationId;
 
     private int pageSize;
-    private int pageNumber;
     private int offset;
     private String sort;
 
     public Part(){
-      pageSize = 10; // TODO Default to default maximum 
+      pageSize = MAX_SIZE;
+      offset = 0;
     }
 
-    public String getPartNumber() {
-        return partNumber;
+    public Part(int size, int pageNum, String sort){
+      pageSize = size;
+      setPageNumber(pageNum);
+      setSort(sort);
     }
 
-    public void setPartNumber(String partNumber) {
-        this.partNumber = partNumber;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    public String getPartName() {
-        return partName;
+  	public void setPageSize(int pageSize) {
+      if(pageSize > MAX_SIZE)
+        this.pageSize = MAX_SIZE;
+      else
+	    	this.pageSize = pageSize;
+  	}
+
+    @Override
+    public int getOffset() {
+        return offset;
     }
 
-    public void setPartName(String partName) {
-        this.partName = partName;
-    }
+  	public void setOffset(int offset) {
+  		this.offset = offset;
+  	}
 
-    public String getImg() {
-      return img;
-    }
-  
-    public void setImg(String img) {
-      this.img = img;
-    }
-
-    public String getLine(){
-      return line;
-    }
-
-    public void setLine(String line){
-      this.line = line;
-    }
-
-    public String getProductNameInfo(){
-      return productNameInfo;
-    }
+  	public void setSort(String sort) {
+  		this.sort = sort;
+   	}
  
-    public void setProductNameInfo(String productNameInfo){
-      this.productNameInfo = productNameInfo;
+    public Pageable next() {
+      setPageNumber(getPageNumber() + 1);
+      return this;
     }
+
+    @Override
+    public Pageable previousOrFirst() {
+      int page = getPageNumber();
+
+      if(page > 0)
+        setPageNumber(page - 1);
+        
+      return this;
+    }
+
+    @Override
+    public Pageable first() {
+      setPageNumber(0);
+      return this;
+    }
+
+    @Override
+    public boolean hasPrevious() {
+      return getPageNumber() > 0;
+    }
+
 
     @Override
     public int getPageNumber() {
@@ -72,52 +97,87 @@ public class Part implements Dto, Pageable {
             return 0;
         }
     }
-
-    @Override
-    public int getPageSize() {
-        return pageSize;
+ 
+    private void setPageNumber(int page){
+      offset = pageSize * page;
     }
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-    @Override
-    public int getOffset() {
-        return offset;
-    }
-
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
 
     @Override
     public Sort getSort() {
         Sort.Order order = new Sort.Order("desc".equalsIgnoreCase(sort) ? Sort.Direction.DESC : Sort.Direction.ASC, "partNumber");
         return new Sort(order);
     }
-
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
-
-    @Override
-    public Pageable next() {
-        return null;
+    public String getPartNumberDisplay(){
+      return partNumberDisplay;
     }
-
-    @Override
-    public Pageable previousOrFirst() {
-        return null;
+    public String getPartNumberDescription(){
+      return partNumberDescription;
     }
-
-    @Override
-    public Pageable first() {
-        return null;
+    public String getSuggestedOrderQty(){
+      return suggestedOrderQty;
     }
-
-    @Override
-    public boolean hasPrevious() {
-        return false;
+    public String getShortDescription(){
+      return shortDescription;
+    }
+    public String getBrandCode(){
+      return brandCode;
+    }
+    public String getPartNumber(){
+      return partNumber;
+    }
+    public String getProductFeatures(){
+      return productFeatures;
+    }
+    public String getImgOrientationId(){
+      return imgOrientationId;
+    }
+    public String getPartNumberImage(){
+      return partNumberImage;
+    }
+    public String getPartNumberThumbnail(){
+      return partNumberThumbnail;
+    }
+    public String getPrimaryImage(){
+      return primaryImage;
+    }
+    public String getRepresentationId(){
+      return representationId;
+    }
+    public void setPartNumberDisplay(String partNumberDisplay){
+      this.partNumberDisplay = partNumberDisplay;
+    }
+    public void setPartNumberDescription(String partNumberDescription){
+      this.partNumberDescription = partNumberDescription;
+    }
+    public void setSuggestedOrderQty(String suggestedOrderQty){
+      this.suggestedOrderQty = suggestedOrderQty;
+    }
+    public void setShortDescription(String shortDescription){
+      this.shortDescription = shortDescription;
+    }
+    public void setBrandCode(String brandCode){
+      this.brandCode = brandCode;
+    }
+    public void setPartNumber(String partNumber){
+      this.partNumber = partNumber;
+    }
+    public void setProductFeatures(String productFeatures){
+      this.productFeatures = productFeatures;
+    }
+    public void setImgOrientationId(String imgOrientationId){
+      this.imgOrientationId = imgOrientationId;
+    }
+    public void setPartNumberImage(String partNumberImage){
+      this.partNumberImage = partNumberImage;
+    }
+    public void setPartNumberThumbnail(String partNumberThumbnail){
+      this.partNumberThumbnail = partNumberThumbnail;
+    }
+    public void setPrimaryImage(String primaryImage){
+      this.primaryImage = primaryImage;
+    }
+    public void setRepresentationId(String representationId){
+      this.representationId = representationId;
     }
 }
+

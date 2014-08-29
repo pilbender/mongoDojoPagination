@@ -19,7 +19,7 @@ define([
 
         // NumberSpinner
         this.pageSpinnerNode.set("intermediateChanges", true);
-        this.pageSpinnerNode.set("constraints", {min:0, max: 3});
+        this.pageSpinnerNode.set("constraints", {min:0});
         this.pageSpinnerNode.set("value", this.page);
         this.watch("page", function(attr, oldVal, newVal){
           this.pageSpinnerNode.set("value", newVal, false);
