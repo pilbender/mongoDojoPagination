@@ -3,6 +3,8 @@ package net.raescott.dto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * @author Richard Scott Smith <scott.smith@isostech.com>
@@ -24,20 +26,20 @@ public class Part implements Dto, Pageable {
     private String representationId;
 
     private int pageSize;
+
+    @JsonIgnore
     private int offset;
+
+    @JsonIgnore
     private String sort;
 
     public Part(){
       pageSize = MAX_SIZE;
       offset = 0;
+      sort = "asc";      
     }
 
-    public Part(int size, int pageNum, String sort){
-      pageSize = size;
-      setPageNumber(pageNum);
-      setSort(sort);
-    }
-
+    @JsonIgnore
     public int getPageSize() {
         return pageSize;
     }
@@ -49,6 +51,7 @@ public class Part implements Dto, Pageable {
 	    	this.pageSize = pageSize;
   	}
 
+    @JsonIgnore
     @Override
     public int getOffset() {
         return offset;
@@ -89,6 +92,7 @@ public class Part implements Dto, Pageable {
     }
 
 
+    @JsonIgnore
     @Override
     public int getPageNumber() {
         if (getPageSize() > 0) {
@@ -102,6 +106,7 @@ public class Part implements Dto, Pageable {
       offset = pageSize * page;
     }
 
+    @JsonIgnore
     @Override
     public Sort getSort() {
         Sort.Order order = new Sort.Order("desc".equalsIgnoreCase(sort) ? Sort.Direction.DESC : Sort.Direction.ASC, "partNumber");

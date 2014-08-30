@@ -55,7 +55,7 @@ public class AjaxController {
 
 					partPageable.setPageSize(to - from + 1);
 					partPageable.setOffset(from);
-					partPageable.setSort("asc");
+					partPageable.setSort("desc");
 				}
 
 				partList = partMongoRepositoryGenerated.findAll(partPageable).getContent();
