@@ -9,3 +9,5 @@ mongoDojoPagination.iml
 /.classpath
 /.project
 /.settings
+
+.*

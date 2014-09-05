@@ -12,5 +12,5 @@ public interface PartMongoRepositoryGenerated extends PagingAndSortingRepository
 	// findAll can't be here because it is not a property to generate a method.
 	//public Iterable<Person> findAll(String id);
 	public Part findByPartNumber(String partNumber);
-	public Iterable<Part> findByPartName(String name);
+//	public Iterable<Part> findByPartName(String name);
 }
