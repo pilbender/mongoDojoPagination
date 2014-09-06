@@ -2,7 +2,7 @@
   Widget - Declarative
   <div data-dojo-id="catalogStore" data-dojo-type="dojo/store/JsonRest"
        data-dojo-props="target: '/mongoDojoPagination/ajax/example-paging?', idAttribute: 'partNumber'"></div>
-  <div data-dojo-type="demo/PageablePresenter" data-dojo-props="store:catalogStore, type:'demo/CatalogLineItem', page:0, pageSize:7"></div>
+  <div data-dojo-type="demo/PageablePresenter" data-dojo-props="store:catalogStore, type:'demo/CatalogLineItem', page:0, pageSize:6"></div>
 </p>
 
 <script data-dojo-config="async: 1, dojoBlankHtmlUrl: '/blank.html',
